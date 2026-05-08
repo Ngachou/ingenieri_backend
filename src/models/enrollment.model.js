@@ -19,11 +19,15 @@ const enrollmentSchema = new mongoose.Schema(
             enum: ["student", "assistant", "teacher"],
             default: "student",
         },
+        sex: {
+            type: String,
+            enum: ["M", "F"],
+        },
 
         status: {
             type: String,
-            enum: ["active", "left", "banned", "pending"],
-            default: "pending"
+            enum: ["active", "left", "banned"],
+            default: "active"
         },
 
         joinedAt: {

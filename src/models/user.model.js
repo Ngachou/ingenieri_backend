@@ -29,10 +29,26 @@ const userSchema = new mongoose.Schema(
             default: "student",
         },
 
-
         avatar: {
             type: String,
             default: null,
+        },
+
+        matricule: {
+            type: String,
+            required: true,
+            trim: true,
+        },
+        school: {
+            type: String,
+        },
+        level: {
+            type: Number,
+        },
+
+        birthDate: {
+            type: Date,
+            required: true,
         },
 
         isActive: {

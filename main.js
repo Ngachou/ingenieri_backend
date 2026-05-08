@@ -4,7 +4,10 @@ const app = require("express")()
 
 const PORT = process.env.PORT || 3000
 
-app.get("/", (req, res) => res.json({ err: false, msg: "Welcome to the API of classroom of the elite ", data: [] }))
+app.
+    use(require("express").json())
+    .use("/auth", require("./src/api/routes/auth.routes"))
+    .get("/", (req, res) => res.json({ err: false, msg: "Welcome to the API of classroom of the elite ", data: [] }))
 
 
 connectDB()
