@@ -18,6 +18,10 @@ const classroomSchema = new mongoose.Schema(
             type: String,
         },
 
+        favicon: {
+            type: String,
+        },
+
         teacher: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",
