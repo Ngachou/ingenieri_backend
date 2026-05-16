@@ -42,7 +42,7 @@ exports.signup = async (req, res) => {
     }
 }
 
-const confirmEmail = async (req, res) => {
+exports.confirmEmail = async (req, res) => {
     try {
         const { token } = req.query;
         if (!token) return res.status(400).json({ error: true, msg: 'Token is required' });

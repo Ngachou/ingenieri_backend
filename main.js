@@ -1,4 +1,4 @@
-const { protect } = require("./src/api/middleware/protect")
+const { protect, adminOnly } = require("./src/api/middleware/protect")
 const connectDB = require("./src/config/db")
 const cors = require("cors")
 const app = require("express")()
@@ -6,9 +6,9 @@ const app = require("express")()
 const PORT = process.env.PORT || 3000
 
 app
-    .use(cors({ origin: "*", credentials: true }))
+    .use(cors({ origin: ["http://192.168.43.13", "http://192.168.43.194"], credentials: true }))
     .use((req, res, next) => {
-        console.log("called...")
+        console.log("called... ", new Date().getTime().toLocaleString())
         next()
     })
     .use(require("express").json())
@@ -17,6 +17,8 @@ app
     .use(protect)
     .use("/course", require("./src/api/routes/course.routes"))
     .use("/classroom", require("./src/api/routes/classroom.routes"))
+    .use(adminOnly)
+    .use("/admin", require("./src/api/routes/admin.routes"))
 
 
 connectDB();
